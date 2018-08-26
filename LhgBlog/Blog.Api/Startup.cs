@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Infrastructure.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Blog.Api
@@ -17,13 +19,21 @@ namespace Blog.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //配置数据库服务
+            services.AddDbContext<MyDbContext>(options =>
+            {
+                options.UseMySql("Server=107.173.181.31;Port=3306;Database=lhgBlogDB; User=root;Password=lhg1995;");
+            });
+            
             //注册Https Service
             services.AddHttpsRedirection(options =>
             {
                 options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect; //状态码
                 options.HttpsPort = 5001; //使用的端口
             });
-            //注册hSTS
+
+            //注册hSTS（建议生产环境使用）
             services.AddHsts(options =>
             {
                 options.Preload = true;
@@ -54,15 +64,6 @@ namespace Blog.Api
             //使用Https 重定向中间件（注意，这个使用中间件的顺序很重要，必须要在UseMvc之前）
             app.UseHttpsRedirection();
 
-
-
-
-
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
             //配置使用MVC中间件（默认的路由，特性方式）
             app.UseMvc();
         }
