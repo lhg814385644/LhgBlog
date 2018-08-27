@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Core.interfaces;
 using Blog.Infrastructure.Database;
+using Blog.Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +45,10 @@ namespace Blog.Api
                 options.ExcludedHosts.Add("www.example.com");
             });
 
+            //注册接口服务
+            services.AddScoped<IUnitOfWork, UnitOfWork>();  
+            services.AddScoped<IPostRepository, PostRepository>();
+            
 
         }
 
