@@ -25,7 +25,7 @@ namespace Blog.Api
             //配置数据库服务
             services.AddDbContext<MyDbContext>(options =>
             {
-                options.UseMySql("Server=107.173.181.31;Port=3306;Database=lhgBlogDB; User=root;Password=lhg1995;");
+                options.UseMySql("");
             });
             
             //注册Https Service
