@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
 
 namespace Blog.Api
 {
@@ -16,8 +18,26 @@ namespace Blog.Api
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
 
+            #region 配置Seailog
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug() //最小输出级别
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information) //重写，日志输出的最小级别如果是以Microsoft空间开头的，那么输出的最小级别就是Information
+                .Enrich.FromLogContext()
+                .WriteTo.Console()  //输出到控制台
+                .WriteTo.File(Path.Combine("logs", @"log.txt"), rollingInterval: RollingInterval.Day) //输出到文件
+                .CreateLogger();
+            #endregion
+
+
+
+
+
+
+
+
+            var host = CreateWebHostBuilder(args).Build();
             //创建一个作用域
             using (var scope = host.Services.CreateScope())
             {
@@ -32,17 +52,16 @@ namespace Blog.Api
                 catch (Exception e)
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogError(e,"Error occured on sending The Database    ");
+                    logger.LogError(e, "Error occured on sending The Database    ");
                 }
 
             }
-
-
             host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseSerilog();  //使用Serilog,并且会把之前默认的 Logger配置给覆盖掉，完全使用Serilog的配置
     }
 }
