@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Blog.Core.interfaces;
 using Blog.Infrastructure.Database;
 using Blog.Infrastructure.Repository;
+using Blog.Infrastructure.Resource;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,7 +30,7 @@ namespace Blog.Api
             {
                 options.UseMySql("");
             });
-            
+
             //注册Https Service
             services.AddHttpsRedirection(options =>
             {
@@ -46,9 +49,14 @@ namespace Blog.Api
             });
 
             //注册接口服务
-            services.AddScoped<IUnitOfWork, UnitOfWork>();  
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostRepository, PostRepository>();
-            
+
+            //注册AutoMapper
+            services.AddAutoMapper();
+            //注册FluentValidation
+            //  IValidator<PostResource>被验证的对象，PostResourceValidator 对应的验证规则
+            services.AddTransient<IValidator<PostResource>, PostResourceValidator>();
 
         }
 

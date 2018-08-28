@@ -1,0 +1,80 @@
+2018-08-28 23:05:12.643 +08:00 [INF] Entity Framework Core 2.1.2-rtm-30932 initialized 'MyDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2018-08-28 23:05:15.987 +08:00 [INF] Executed DbCommand (352ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`Author`, `p`.`Body`, `p`.`LastModified`, `p`.`Title`
+FROM `Posts` AS `p`
+2018-08-28 23:05:16.304 +08:00 [INF] User profile is available. Using 'C:\Users\LHG\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-28 23:05:17.827 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Authentication failed because the remote party has closed the transport stream.
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.Security.SslStream.BeginAuthenticateAsServer(SslServerAuthenticationOptions sslServerAuthenticationOptions, CancellationToken cancellationToken, AsyncCallback asyncCallback, Object asyncState)
+   at System.Net.Security.SslStream.<>c.<AuthenticateAsServerAsync>b__51_0(SslServerAuthenticationOptions arg1, CancellationToken arg2, AsyncCallback callback, Object state)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2](Func`5 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, Object state, TaskCreationOptions creationOptions)
+   at System.Threading.Tasks.TaskFactory.FromAsync[TArg1,TArg2](Func`5 beginMethod, Action`1 endMethod, TArg1 arg1, TArg2 arg2, Object state, TaskCreationOptions creationOptions)
+   at System.Threading.Tasks.TaskFactory.FromAsync[TArg1,TArg2](Func`5 beginMethod, Action`1 endMethod, TArg1 arg1, TArg2 arg2, Object state)
+   at System.Net.Security.SslStream.AuthenticateAsServerAsync(SslServerAuthenticationOptions sslServerAuthenticationOptions, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionAdapter.InnerOnConnectionAsync(ConnectionAdapterContext context)
+2018-08-28 23:05:19.504 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2018-08-28 23:05:19.531 +08:00 [INF] Request finished in 27.686ms 307 
+2018-08-28 23:05:19.551 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/values  
+2018-08-28 23:05:19.635 +08:00 [INF] Route matched with {action = "Get", controller = "Value"}. Executing action Blog.Api.Controllers.ValueController.Get (Blog.Api)
+2018-08-28 23:05:19.713 +08:00 [INF] Executing action method Blog.Api.Controllers.ValueController.Get (Blog.Api) - Validation state: "Valid"
+2018-08-28 23:05:19.718 +08:00 [INF] Executed action method Blog.Api.Controllers.ValueController.Get (Blog.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.2837ms.
+2018-08-28 23:05:19.733 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2018-08-28 23:05:19.751 +08:00 [INF] Executed action Blog.Api.Controllers.ValueController.Get (Blog.Api) in 109.3802ms
+2018-08-28 23:05:19.764 +08:00 [INF] Request finished in 212.5794ms 200 text/plain; charset=utf-8
+2018-08-28 23:05:19.815 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico  
+2018-08-28 23:05:19.818 +08:00 [INF] Request finished in 3.2956ms 404 
+2018-08-28 23:05:27.410 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/posts  
+2018-08-28 23:05:27.424 +08:00 [INF] Route matched with {action = "GetPosts", controller = "Post"}. Executing action Blog.Api.Controllers.PostController.GetPosts (Blog.Api)
+2018-08-28 23:05:27.446 +08:00 [INF] Executing action method Blog.Api.Controllers.PostController.GetPosts (Blog.Api) - Validation state: "Valid"
+2018-08-28 23:05:27.455 +08:00 [INF] Entity Framework Core 2.1.2-rtm-30932 initialized 'MyDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2018-08-28 23:05:29.243 +08:00 [INF] Executed DbCommand (430ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`Author`, `p`.`Body`, `p`.`LastModified`, `p`.`Title`
+FROM `Posts` AS `p`
+2018-08-28 23:05:29.424 +08:00 [INF] Executed action method Blog.Api.Controllers.PostController.GetPosts (Blog.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1973.8057000000001ms.
+2018-08-28 23:05:29.443 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[Blog.Core.Entities.Post, Blog.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-28 23:05:29.603 +08:00 [INF] Executed action Blog.Api.Controllers.PostController.GetPosts (Blog.Api) in 2175.259ms
+2018-08-28 23:05:29.610 +08:00 [INF] Request finished in 2199.8046ms 200 application/json; charset=utf-8
+2018-08-28 23:06:37.234 +08:00 [INF] Entity Framework Core 2.1.2-rtm-30932 initialized 'MyDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2018-08-28 23:06:39.238 +08:00 [INF] Executed DbCommand (354ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`Author`, `p`.`Body`, `p`.`LastModified`, `p`.`Title`
+FROM `Posts` AS `p`
+2018-08-28 23:06:39.637 +08:00 [INF] User profile is available. Using 'C:\Users\LHG\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-28 23:06:41.413 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Authentication failed because the remote party has closed the transport stream.
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.Security.SslStream.BeginAuthenticateAsServer(SslServerAuthenticationOptions sslServerAuthenticationOptions, CancellationToken cancellationToken, AsyncCallback asyncCallback, Object asyncState)
+   at System.Net.Security.SslStream.<>c.<AuthenticateAsServerAsync>b__51_0(SslServerAuthenticationOptions arg1, CancellationToken arg2, AsyncCallback callback, Object state)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1,TArg2](Func`5 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, TArg2 arg2, Object state, TaskCreationOptions creationOptions)
+   at System.Threading.Tasks.TaskFactory.FromAsync[TArg1,TArg2](Func`5 beginMethod, Action`1 endMethod, TArg1 arg1, TArg2 arg2, Object state, TaskCreationOptions creationOptions)
+   at System.Threading.Tasks.TaskFactory.FromAsync[TArg1,TArg2](Func`5 beginMethod, Action`1 endMethod, TArg1 arg1, TArg2 arg2, Object state)
+   at System.Net.Security.SslStream.AuthenticateAsServerAsync(SslServerAuthenticationOptions sslServerAuthenticationOptions, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionAdapter.InnerOnConnectionAsync(ConnectionAdapterContext context)
+2018-08-28 23:06:42.489 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2018-08-28 23:06:42.512 +08:00 [INF] Request finished in 23.6902ms 307 
+2018-08-28 23:06:42.531 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/values  
+2018-08-28 23:06:42.617 +08:00 [INF] Route matched with {action = "Get", controller = "Value"}. Executing action Blog.Api.Controllers.ValueController.Get (Blog.Api)
+2018-08-28 23:06:42.698 +08:00 [INF] Executing action method Blog.Api.Controllers.ValueController.Get (Blog.Api) - Validation state: "Valid"
+2018-08-28 23:06:42.704 +08:00 [INF] Executed action method Blog.Api.Controllers.ValueController.Get (Blog.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.26780000000000004ms.
+2018-08-28 23:06:42.712 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2018-08-28 23:06:42.724 +08:00 [INF] Executed action Blog.Api.Controllers.ValueController.Get (Blog.Api) in 101.8678ms
+2018-08-28 23:06:42.730 +08:00 [INF] Request finished in 198.6958ms 200 text/plain; charset=utf-8
+2018-08-28 23:06:42.760 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico  
+2018-08-28 23:06:42.761 +08:00 [INF] Request finished in 1.7745ms 404 
+2018-08-28 23:06:47.496 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/posts  
+2018-08-28 23:06:47.521 +08:00 [INF] Route matched with {action = "GetPosts", controller = "Post"}. Executing action Blog.Api.Controllers.PostController.GetPosts (Blog.Api)
+2018-08-28 23:06:47.563 +08:00 [INF] Executing action method Blog.Api.Controllers.PostController.GetPosts (Blog.Api) - Validation state: "Valid"
+2018-08-28 23:06:47.576 +08:00 [INF] Entity Framework Core 2.1.2-rtm-30932 initialized 'MyDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: None
+2018-08-28 23:06:48.213 +08:00 [INF] Executed DbCommand (278ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`Author`, `p`.`Body`, `p`.`LastModified`, `p`.`Title`
+FROM `Posts` AS `p`
+2018-08-28 23:06:48.298 +08:00 [INF] Executed action method Blog.Api.Controllers.PostController.GetPosts (Blog.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 731.538ms.
+2018-08-28 23:06:48.306 +08:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[Blog.Infrastructure.Resource.PostResource, Blog.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-28 23:06:48.361 +08:00 [INF] Executed action Blog.Api.Controllers.PostController.GetPosts (Blog.Api) in 836.9143ms
+2018-08-28 23:06:48.365 +08:00 [INF] Request finished in 869.3861ms 200 application/json; charset=utf-8
